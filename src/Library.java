@@ -7,7 +7,7 @@ public class Library {
     private List<Author> authors;
     private List<User> users;
 
-
+    //Constructor
     public Library() {
         this.books = new ArrayList<>();
         this.authors = new ArrayList<>();
@@ -17,7 +17,6 @@ public class Library {
     public void addBook(Book book) {
         books.add(book);
     }
-
     public void addAuthor(Author author) {
         authors.add(author);
     }
@@ -25,8 +24,10 @@ public class Library {
         users.add(user);
     }
 
+    //This method lends a book to the user following the proposed business rules
     public void loanBook(User user, List<Book> books) {
-        System.out.println(" --- BORROW BOOK SESSION --- ");
+        //TODO: Add case when doesn't exists the book in the list
+        System.out.println(" --- LOAN BOOK SESSION --- ");
         String title;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter with book title: ");
@@ -49,6 +50,7 @@ public class Library {
             }
         }
     }
+    //This method is responsible for returning a book by the user
     public void devolutionBook(User user, Book book) {
         System.out.println("--- DEVOLUTION BOOK SESSION --- ");
         if(user.book == null) {
@@ -60,7 +62,9 @@ public class Library {
 
         }
     }
+    //This method show all the books collection
     public void showListBook(List<Book> books){
+        System.out.println("--- BOOK LIST --- ");
         if(books.isEmpty()) {
             System.out.println("The library doesn't have any books at the moment.");
         } else {
@@ -72,11 +76,11 @@ public class Library {
             }
         }
     }
+    //This method creates and add a new book to the book collection
     public void donateBook() {
         System.out.println("--- DONATION BOOK SESSION --- ");
         Scanner scanner = new Scanner(System.in);
-        String author;
-        String title;
+        String author, title;
         System.out.println("Enter with book title: ");
         title = scanner.nextLine();
         System.out.println("Enter with book author: ");
@@ -89,24 +93,42 @@ public class Library {
             Author newAuthor = new Author(author);
             Book newBook = new Book(title, newAuthor, true);
             addBook(newBook);
-            System.out.println("Thank your for the donation!");
+            System.out.println("Thank you for the donation!");
         }
     }
-    public void menu() {
-        Scanner scanner = new Scanner(System.in);
+    //aboutUs section was created to bring a immersive experience
+    public void aboutUs() {
+        System.out.println("Welcome to our mobile library – a haven for book lovers! At our library, \n" +
+                            "we believe in the power of literature to inspire and transform lives. \n" +
+                            "Our traveling library brings the joy of reading to your doorstep,\n" +
+                            "offering a diverse collection of books for all ages and interests.\n" +
+                            "\n");
 
-        System.out.println("Enter with your name: ");
+    }
+    public User AccessIdentification() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("To access the library services, please, say to us your name: ");
         var name = scanner.nextLine();
+
         User user = new User(name, null);
         addUser(user);
+        return user;
+    }
+
+    //Main method of the project, which is used to guide the user in their choices
+    public void menu() {
+        Scanner scanner = new Scanner(System.in);
+        User user = AccessIdentification();
 
         while (true) {
-            System.out.println("-------WELCOME TO OUR LIBRARY-------");
-            System.out.println("---------------[MENU]---------------");
+            System.out.println("-------WELCOME TO OUR MOBILE LIBRARY-------");
+            System.out.println("-------------------[MENU]------------------- \n");
             System.out.println("1 - Donate book");
-            System.out.println("2 - Borrow book");
+            System.out.println("2 - Loan book");
             System.out.println("3 - Return book");
             System.out.println("4 - Show all books");
+            System.out.println("5 - About us!");
+
 
             int choice = scanner.nextInt();
             scanner.nextLine();
@@ -118,6 +140,8 @@ public class Library {
                 devolutionBook(user, user.book);
             } else if (choice == 4) {
                 showListBook(books);
+            } else if (choice == 5) {
+                aboutUs();
             } else {
                 System.out.println("The chosen value does not exist among the menu options");
             }
