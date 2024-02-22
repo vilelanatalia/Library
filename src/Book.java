@@ -4,27 +4,22 @@ public class Book {
     private Author author;
     private boolean isAvailable;
 
+    // Constructor
     public Book( String title, Author author, boolean isAvailable) {
         this.title = title;
         this.author = author;
         this.isAvailable = isAvailable;
     }
 
+    //Getters and Setters
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
 
     public boolean isAvailable() {
         return isAvailable;
@@ -36,10 +31,6 @@ public class Book {
             return "Borrowed";
 
         }
-    }
-
-    public void setAvailable(boolean available) {
-        isAvailable = available;
     }
     public void updateAvailabity() {
         this.isAvailable = !isAvailable;
