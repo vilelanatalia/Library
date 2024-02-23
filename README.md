@@ -2,7 +2,18 @@
 
 This is a simple project created in JAVA to practice language skills a little. In this project, you can donate, borrow, or return a book.
 
-### Preamble 
+### Requirements
+- Necessary Java, updated version.
+
+### Installation
+1. Clone the following repository in your terminal 
+
+```bash
+git clone https://github.com/vilelanatalia/Library.git
+```
+2. Imported it in Intellij IDEA or any other Java IDE.
+
+3. Run the application 
 
 - There is no graphical interface for user interaction; therefore, all communication is done through the terminal!
 - To access the project, you need to have Java installed.
