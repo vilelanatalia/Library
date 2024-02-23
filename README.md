@@ -1,6 +1,6 @@
 # Welcome to Library
 
-This is a simple project created in JAVA to practice language skills a little. In this project, you can donate, borrow, or return a book.
+This is a simple project created in JAVA to practice language skills. In this project, you can donate, borrow, or return a book.
 
 ## Requirements
 - Necessary Java, updated version.
